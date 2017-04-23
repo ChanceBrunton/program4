@@ -1,0 +1,3 @@
+javac -cp .:/Users/chance_brunton/packages/junit-4.12.jar:/Users/chance_brunton/packages/hamcrest-core-1.3.jar *.java
+java -cp .:/Users/chance_brunton/packages/junit-4.12.jar:/Users/chance_brunton/packages/hamcrest-core-1.3.jar org.junit.runner.JUnitCore Circle1Test
+java -cp .:/Users/chance_brunton/packages/junit-4.12.jar:/Users/chance_brunton/packages/hamcrest-core-1.3.jar org.junit.runner.JUnitCore Circle2Test

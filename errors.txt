@@ -1,0 +1,12 @@
+Circle.java:
+	- scale added factor instead of multiplying it
+		Found by testScaleExpand()
+	- incorrect formula for intersection
+		Found by testIntersectionTrue()
+
+Circle2.java:
+	- x and y were seitched in constructor call to super
+		Found by simpleMove()
+	- intersection was false for radius<distance<(radius+other.radius)
+	- intersects() returns true for one circle inside the other
+		Found by testIntersectionInside()
