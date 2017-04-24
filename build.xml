@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project name="program3" default="compile">
+	<property name="src.dir" value="."/>
+	<property name="build.dir" value="./build"/>
+	<property name="junit.jar" value="/Users/chance_brunton/packages/junit-4.12.jar"/>
+	<property name="hamcrest.jar" value="/Users/chance_brunton/packages/hamcrest-core-1.3.jar"/>
+
+	<path id="classpath">
+		<path location="${junit.jar}"/>
+		<path location="${hamcrest.jar}"/>
+	</path>
+	
+	<target name="run" depends="compile">
+		<java classname="CircleRun" fork="true" dir="${build.dir}">
+			<arg value="1"/>
+			<arg value="2"/>
+			<arg value="3"/>
+			<arg value="2"/>
+			<arg value="1"/>
+			<arg value="3"/>
+		</java>
+	</target>
+	
+	<target name="test" depends="compile">
+		<junit printsummary="on" haltonfailure="no" fork="true">
+			<classpath>
+				<path refid="classpath"/>
+				<pathelement location="${build.dir}"/>
+			</classpath>
+			<batchtest>
+				<fileset dir="${src.dir}" includes="**/*Test.java"/>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${build.dir}"/>
+		<javac destdir="${build.dir}" includeantruntime="false">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+	
+	<target name="clean">
+		<delete>
+			<fileset dir="${build.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+		</delete>
+	</target>
+
+</project>
